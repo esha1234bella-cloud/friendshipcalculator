@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amistad | The Magic of True Friendship & Calculator</title>
+    <meta name="description" content="Celebrate true friendship with our cute interactive Friendship Calculator, inspiring stories, curated gallery, and daily bestie affirmations.">
+    
+    <!-- Google Fonts: Fredoka & Quicksand & Pacifico -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Canvas for Gentle Hearts & Balloons -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Top Announcement Marquee -->
+    <div class="top-marquee-container" id="top-marquee">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span>💖 FRIENDSHIP CALCULATOR 💖</span>
+                <span class="sparkle">✨ Discover Your Soul Bond ✨</span>
+                <span>👭 Cherish Every Memory 👭</span>
+                <span class="sparkle">🌸 Real Friends Multiply Joy & Divide Sorrow 🌸</span>
+                <span>💖 FRIENDSHIP CALCULATOR 💖</span>
+                <span class="sparkle">✨ Discover Your Soul Bond ✨</span>
+                <span>👭 Cherish Every Memory 👭</span>
+                <span class="sparkle">🌸 Real Friends Multiply Joy & Divide Sorrow 🌸</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span>💖 FRIENDSHIP CALCULATOR 💖</span>
+                <span class="sparkle">✨ Discover Your Soul Bond ✨</span>
+                <span>👭 Cherish Every Memory 👭</span>
+                <span class="sparkle">🌸 Real Friends Multiply Joy & Divide Sorrow 🌸</span>
+                <span>💖 FRIENDSHIP CALCULATOR 💖</span>
+                <span class="sparkle">✨ Discover Your Soul Bond ✨</span>
+                <span>👭 Cherish Every Memory 👭</span>
+                <span class="sparkle">🌸 Real Friends Multiply Joy & Divide Sorrow 🌸</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">Amistad<span class="dot">.</span></span>
+            </a>
+            
+            <div class="nav-links" id="nav-links">
+                <a href="#hero" class="nav-link active">Calculator</a>
+                <a href="#importance" class="nav-link">Why Friendship</a>
+                <a href="#pillars" class="nav-link">Pillars</a>
+                <a href="#gallery" class="nav-link">Memories</a>
+                <a href="#interactive" class="nav-link">Bestie Hub</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#hero" class="btn-calculate-nav">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    <span>Test Bond</span>
+                </a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with Friendship Calculator -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-header-text">
+                    <div class="badge-pill">
+                        <i class="fa-solid fa-sparkles"></i> 100% Love & Good Vibes Only
+                    </div>
+                    <h1 class="hero-title">
+                        True Friendship <span class="gradient-text">Lights Up</span> Every Chapter
+                    </h1>
+                    <p class="hero-subtitle">
+                        Friendship is the sweet ribbon that ties souls together. Test the cosmic connection with your best friend, discover your bond score, and celebrate the people who make life magical!
+                    </p>
+                </div>
+
+                <!-- Calculator Container Card -->
+                <div class="calculator-card-wrapper" id="calculator-anchor">
+                    <div class="calc-glow-layer"></div>
+                    <div class="calculator-card">
+                        <div class="calc-header">
+                            <div class="calc-badge">
+                                <i class="fa-solid fa-heart"></i>
+                                <span>Friendship Meter</span>
+                            </div>
+                            <h2 class="calc-title">Friendship Calculator</h2>
+                            <p class="calc-tagline">Enter your names to reveal the magic of your friendship bond!</p>
+                        </div>
+
+                        <form id="friendship-form" class="calc-form">
+                            <div class="inputs-grid">
+                                <div class="input-group">
+                                    <label for="name1">
+                                        <i class="fa-solid fa-user-heart"></i> Your Name
+                                    </label>
+                                    <div class="input-box">
+                                        <input type="text" id="name1" placeholder="e.g., Alex" required autocomplete="off" maxlength="24">
+                                        <span class="input-icon">🌸</span>
+                                    </div>
+                                </div>
+
+                                <div class="heart-separator">
+                                    <div class="pulse-heart">
+                                        <i class="fa-solid fa-heart"></i>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="name2">
+                                        <i class="fa-solid fa-user-group"></i> Bestie's Name
+                                    </label>
+                                    <div class="input-box">
+                                        <input type="text" id="name2" placeholder="e.g., Taylor" required autocomplete="off" maxlength="24">
+                                        <span class="input-icon">✨</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vibe-selection">
+                                <label class="vibe-label">Choose Your Core Friendship Vibe:</label>
+                                <div class="vibe-chips">
+                                    <button type="button" class="vibe-chip active" data-vibe="crime">
+                                        <span>🕶️</span> Partners in Crime
+                                    </button>
+                                    <button type="button" class="vibe-chip" data-vibe="soul">
+                                        <span>🔮</span> Soul Siblings
+                                    </button>
+                                    <button type="button" class="vibe-chip" data-vibe="laughs">
+                                        <span>😂</span> 3 AM Laughter Duo
+                                    </button>
+                                    <button type="button" class="vibe-chip" data-vibe="hype">
+                                        <span>👑</span> Ultimate Hype Squad
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-calculate" id="calc-submit-btn">
+                                <span class="btn-content">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    <span>Calculate Friendship Score</span>
+                                </span>
+                                <span class="btn-shine"></span>
+                            </button>
+                        </form>
+
+                        <!-- Calculation Loading State -->
+                        <div class="calc-loading hidden" id="calc-loading">
+                            <div class="spinner-heart">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <h3 class="loading-text" id="loading-msg">Analyzing cosmic vibes...</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Calculation Result Card -->
+                        <div class="calc-result hidden" id="calc-result">
+                            <div class="result-celebrate-badge" id="result-badge">
+                                🌟 Unbreakable Soulmate Bond! 🌟
+                            </div>
+
+                            <div class="result-main">
+                                <div class="score-circle-container">
+                                    <svg class="score-svg" viewBox="0 0 160 160">
+                                        <circle class="score-bg" cx="80" cy="80" r="70"></circle>
+                                        <circle class="score-bar" id="score-circle-bar" cx="80" cy="80" r="70"></circle>
+                                    </svg>
+                                    <div class="score-number-box">
+                                        <span class="score-number" id="result-score">98</span>
+                                        <span class="score-percent">%</span>
+                                    </div>
+                                </div>
+
+                                <div class="result-details">
+                                    <h3 class="result-names">
+                                        <span id="res-name1">Alex</span> &amp; <span id="res-name2">Taylor</span>
+                                    </h3>
+                                    <div class="friendship-archetype" id="res-archetype">
+                                        <i class="fa-solid fa-crown"></i> <span>The Inseparable Duo</span>
+                                    </div>
+                                    <p class="result-summary" id="res-summary">
+                                        Your connection is filled with genuine trust, countless shared laughs, and a bond that weathers any storm. You're each other's safe haven!
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Metrics Breakdown -->
+                            <div class="metrics-grid">
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <span><i class="fa-solid fa-shield-heart"></i> Trust & Loyalty</span>
+                                        <strong id="m-trust">99%</strong>
+                                    </div>
+                                    <div class="metric-meter"><div class="meter-bar" id="bar-trust" style="width: 99%;"></div></div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <span><i class="fa-solid fa-face-grin-stars"></i> Laughter Index</span>
+                                        <strong id="m-laugh">96%</strong>
+                                    </div>
+                                    <div class="metric-meter"><div class="meter-bar" id="bar-laugh" style="width: 96%;"></div></div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <span><i class="fa-solid fa-comment-dots"></i> Telepathy & Sync</span>
+                                        <strong id="m-telepathy">94%</strong>
+                                    </div>
+                                    <div class="metric-meter"><div class="meter-bar" id="bar-telepathy" style="width: 94%;"></div></div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <span><i class="fa-solid fa-fire"></i> Adventure Energy</span>
+                                        <strong id="m-adventure">97%</strong>
+                                    </div>
+                                    <div class="metric-meter"><div class="meter-bar" id="bar-adventure" style="width: 97%;"></div></div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="result-actions">
+                                <button class="btn-action-primary" id="btn-copy-result">
+                                    <i class="fa-solid fa-copy"></i>
+                                    <span>Copy Bestie Certificate</span>
+                                </button>
+                                <button class="btn-action-secondary" id="btn-recalculate">
+                                    <i class="fa-solid fa-rotate-right"></i>
+                                    <span>Calculate Another</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Importance of Friendship Section -->
+        <section class="importance-section" id="importance">
+            <div class="section-container">
+                <div class="section-badge">
+                    <span>❤️ The Treasure of Life</span>
+                </div>
+                <h2 class="section-title">
+                    Why Friendship Is The <span class="gradient-text">Greatest Gift</span>
+                </h2>
+                <p class="section-desc">
+                    Science confirms what our hearts have always known: genuine friendships improve mental health, extend lifespan, and make every victory twice as sweet.
+                </p>
+
+                <!-- Editorial Story Grid with Curated Unsplash Photos -->
+                <div class="story-grid">
+                    <div class="story-card story-card-large">
+                        <div class="story-image-wrap">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" alt="Group of diverse friends laughing and enjoying sunset together" loading="lazy">
+                            <div class="story-image-overlay"></div>
+                            <span class="story-chip">💖 Connection</span>
+                        </div>
+                        <div class="story-content">
+                            <h3>A Home For Your True Self</h3>
+                            <p>
+                                True friends see the raw, unfiltered version of who you are and love you even more for it. With them, you never have to pretend. They provide the psychological safety where courage and authenticity flourish.
+                            </p>
+                            <div class="quote-mini">
+                                <i class="fa-solid fa-quote-left"></i>
+                                <span>"A real friend is one who walks in when the rest of the world walks out."</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-image-wrap">
+                            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" alt="Two friends hugging with warm smiles at sunset" loading="lazy">
+                            <div class="story-image-overlay"></div>
+                            <span class="story-chip">🛡️ Emotional Anchor</span>
+                        </div>
+                        <div class="story-content">
+                            <h3>Halving Your Burdens</h3>
+                            <p>
+                                In times of turbulence, a simple conversation or a warm hug from a friend releases oxytocin, reducing cortisol levels and reminding you that you're never fighting alone.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-image-wrap">
+                            <img src="https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=800&q=80" alt="Two friends sharing coffee and laughing wholeheartedly" loading="lazy">
+                            <div class="story-image-overlay"></div>
+                            <span class="story-chip">😂 Pure Laughter</span>
+                        </div>
+                        <div class="story-content">
+                            <h3>Medicine for The Soul</h3>
+                            <p>
+                                Shared laughter triggers endorphins and boosts immunity. The ridiculous inside jokes that make you laugh until your stomach hurts are memories etched forever.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Friendship Benefits Counters -->
+                <div class="stats-ribbon">
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <div class="stat-number">+50%</div>
+                        <div class="stat-text">Increase in overall longevity &amp; wellness</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fa-solid fa-face-smile-beam"></i></div>
+                        <div class="stat-number">2x</div>
+                        <div class="stat-text">Greater resilience against stress &amp; burnout</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fa-solid fa-infinity"></i></div>
+                        <div class="stat-number">1000s</div>
+                        <div class="stat-text">Unforgettable stories &amp; shared smiles</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pillars of True Friendship Section -->
+        <section class="pillars-section" id="pillars">
+            <div class="section-container">
+                <div class="section-badge">
+                    <span>✨ Timeless Foundations</span>
+                </div>
+                <h2 class="section-title">
+                    The 5 Pillars of <span class="gradient-text">Unbreakable Bonds</span>
+                </h2>
+                <p class="section-desc">
+                    What transforms an ordinary acquaintance into a lifelong soulmate? Here are the golden threads that weave enduring friendships.
+                </p>
+
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-number">01</div>
+                        <div class="pillar-icon-box">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </div>
+                        <h3>Radical Acceptance</h3>
+                        <p>Loving each other through awkward phases, weird quirks, flaws, and triumphs without judgement or comparison.</p>
+                        <div class="pillar-glow"></div>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-number">02</div>
+                        <div class="pillar-icon-box">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h3>Ironclad Trust</h3>
+                        <p>Knowing that your deepest secrets, vulnerable tears, and wildest dreams are safe in their heart forever.</p>
+                        <div class="pillar-glow"></div>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-number">03</div>
+                        <div class="pillar-icon-box">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3>Unapologetic Hype</h3>
+                        <p>Being each other’s number one cheerleader. Celebrating every win as if it was your own personal victory.</p>
+                        <div class="pillar-glow"></div>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-number">04</div>
+                        <div class="pillar-icon-box">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3>Honest Compassion</h3>
+                        <p>Giving gentle, constructive truth when it's needed most, always rooted in love and growth.</p>
+                        <div class="pillar-glow"></div>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-number">05</div>
+                        <div class="pillar-icon-box">
+                            <i class="fa-solid fa-hourglass-start"></i>
+                        </div>
+                        <h3>Zero-Time Friction</h3>
+                        <p>The rare magic where months of absence vanish in 10 seconds of conversation, picking right back up effortlessly.</p>
+                        <div class="pillar-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Polaroid Memories Gallery Section -->
+        <section class="gallery-section" id="gallery">
+            <div class="section-container">
+                <div class="section-badge">
+                    <span>📸 Snapshot of Joy</span>
+                </div>
+                <h2 class="section-title">
+                    Moments We <span class="gradient-text">Treasure Forever</span>
+                </h2>
+                <p class="section-desc">
+                    Every road trip, spontaneous café run, late-night deep talk, and goofy selfie builds the scrapbook of your life.
+                </p>
+
+                <!-- Polaroid Grid -->
+                <div class="polaroid-grid">
+                    <div class="polaroid-card tilt-left">
+                        <div class="washi-tape"></div>
+                        <div class="polaroid-img">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80" alt="Friends having a spontaneous summer roadtrip" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>"Unplanned adventures are the best ✨"</span>
+                        </div>
+                    </div>
+
+                    <div class="polaroid-card tilt-right">
+                        <div class="washi-tape pink-tape"></div>
+                        <div class="polaroid-img">
+                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80" alt="Best friends laughing outdoors in sunlight" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>"Laughter that cures everything 💕"</span>
+                        </div>
+                    </div>
+
+                    <div class="polaroid-card tilt-left">
+                        <div class="washi-tape purple-tape"></div>
+                        <div class="polaroid-img">
+                            <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=600&q=80" alt="Friends cheering around sunset warmth" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>"Sunset talks & golden memories 🌅"</span>
+                        </div>
+                    </div>
+
+                    <div class="polaroid-card tilt-right">
+                        <div class="washi-tape"></div>
+                        <div class="polaroid-img">
+                            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" alt="Two friends holding hands and rejoicing" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>"Together through thick and thin 👭"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Bestie Hub: Fortune Cookie & Friendship Sticky Wall -->
+        <section class="interactive-section" id="interactive">
+            <div class="section-container">
+                <div class="interactive-grid">
+                    
+                    <!-- Bestie Fortune & Affirmation Machine -->
+                    <div class="interactive-card fortune-card">
+                        <div class="card-pill">✨ Daily Bestie Spark</div>
+                        <h3 class="interactive-title">Friendship Affirmation Cookie</h3>
+                        <p class="interactive-subtitle">Crack open a sweet message to send to your friend today!</p>
+                        
+                        <div class="cookie-display" id="cookie-display">
+                            <div class="cookie-icon-wrapper" id="cookie-btn">
+                                <span class="fortune-cookie-emoji">🥠</span>
+                                <span class="tap-hint">Tap to crack cookie!</span>
+                            </div>
+                            <div class="fortune-paper hidden" id="fortune-paper">
+                                <div class="fortune-heart">💖</div>
+                                <p class="fortune-text" id="fortune-text">
+                                    "Your friend is thinking about how grateful they are to have you in their corner today."
+                                </p>
+                                <button class="btn-copy-fortune" id="btn-copy-fortune" title="Copy to clipboard">
+                                    <i class="fa-solid fa-copy"></i> Copy Note
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="btn-interactive-primary" id="btn-next-fortune">
+                            <i class="fa-solid fa-wand-sparkles"></i> Crack Another Cookie
+                        </button>
+                    </div>
+
+                    <!-- Virtual Friendship Sticky Wall -->
+                    <div class="interactive-card wall-card">
+                        <div class="card-pill">💌 Warmth Wall</div>
+                        <h3 class="interactive-title">Leave a Love Note for a Friend</h3>
+                        <p class="interactive-subtitle">Write a sweet shoutout to celebrate your bestie on our virtual wall!</p>
+
+                        <form id="note-form" class="note-form">
+                            <div class="note-input-row">
+                                <input type="text" id="note-author" placeholder="To: (Bestie's Name)" required maxlength="20">
+                                <input type="text" id="note-from" placeholder="From: (Your Name)" required maxlength="20">
+                            </div>
+                            <textarea id="note-message" placeholder="Write a cute message (e.g. Thanks for always sharing your fries & listening to my rants!)..." required maxlength="120"></textarea>
+                            <button type="submit" class="btn-interactive-secondary">
+                                <i class="fa-solid fa-paper-plane"></i> Pin Note to Wall
+                            </button>
+                        </form>
+
+                        <div class="sticky-board" id="sticky-board">
+                            <!-- Pre-filled cute notes -->
+                            <div class="sticky-note color-pink">
+                                <div class="pin">📌</div>
+                                <div class="note-to">To: <strong>Maya</strong></div>
+                                <p class="note-body">"Thanks for being the only person who understands my weird brain! Love you!"</p>
+                                <div class="note-by">— Sam 🌸</div>
+                            </div>
+                            <div class="sticky-note color-purple">
+                                <div class="pin">📌</div>
+                                <div class="note-to">To: <strong>Jordan</strong></div>
+                                <p class="note-body">"10 years of friendship and we still haven't run out of things to talk about."</p>
+                                <div class="note-by">— Leo 💜</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Friendship Bucket List Checklist -->
+        <section class="bucketlist-section" id="bucketlist">
+            <div class="section-container">
+                <div class="section-badge">
+                    <span>🌟 Bestie Goals</span>
+                </div>
+                <h2 class="section-title">
+                    The Ultimate <span class="gradient-text">Friendship Bucket List</span>
+                </h2>
+                <p class="section-desc">
+                    Check off the wholesome adventures you and your bestie have shared, or pick your next weekend mission!
+                </p>
+
+                <div class="bucketlist-grid" id="bucketlist-grid">
+                    <label class="bucket-item">
+                        <input type="checkbox" checked>
+                        <span class="custom-checkbox"><i class="fa-solid fa-check"></i></span>
+                        <span class="bucket-label">🚗 Go on an unplanned midnight snack road trip</span>
+                    </label>
+
+                    <label class="bucket-item">
+                        <input type="checkbox" checked>
+                        <span class="custom-checkbox"><i class="fa-solid fa-check"></i></span>
+                        <span class="bucket-label">🍿 Host an all-night movie marathon in cozy pajamas</span>
+                    </label>
+
+                    <label class="bucket-item">
+                        <input type="checkbox">
+                        <span class="custom-checkbox"><i class="fa-solid fa-check"></i></span>
+                        <span class="bucket-label">📸 Take silly vintage photobooth pictures together</span>
+                    </label>
+
+                    <label class="bucket-item">
+                        <input type="checkbox">
+                        <span class="custom-checkbox"><i class="fa-solid fa-check"></i></span>
+                        <span class="bucket-label">🏕️ Camp under the stars and share deepest dreams</span>
+                    </label>
+
+                    <label class="bucket-item">
+                        <input type="checkbox">
+                        <span class="custom-checkbox"><i class="fa-solid fa-check"></i></span>
+                        <span class="bucket-label">🎨 Take a chaotic DIY pottery or painting class</span>
+                    </label>
+
+                    <label class="bucket-item">
+                        <input type="checkbox">
+                        <span class="custom-checkbox"><i class="fa-solid fa-check"></i></span>
+                        <span class="bucket-label">💌 Write letters to open together in 10 years</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">💖</span>
+                    <span class="logo-text">Amistad</span>
+                </div>
+                <p class="footer-text">
+                    Dedicated to all the soulmates, partners in crime, and everyday heroes who make our world brighter and warmer.
+                </p>
+            </div>
+
+            <div class="footer-quote-box">
+                <i class="fa-solid fa-heart"></i>
+                <p class="quote-text">
+                    "There are friends, there is family, and then there are friends that become family."
+                </p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Amistad Friendship Portal. Made with pink &amp; purple love ✨</p>
+                <div class="footer-hearts">
+                    <span>💗</span>
+                    <span>💜</span>
+                    <span>🌸</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
