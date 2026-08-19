@@ -7,8 +7,8 @@
    Supabase Configuration
    Paste your Supabase Project credentials below (from Project Settings > API):
    ========================================================================== */
-const SUPABASE_URL = "";       // e.g., "https://abcdefghijkl.supabase.co"
-const SUPABASE_ANON_KEY = "";  // e.g., "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+const SUPABASE_URL = "https://xzunzaockqdpuxmtlkgi.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_VdC9NLHOfejRfztnDgMWFw_NOnQbny9";
 
 let supabaseClient = null;
 
