@@ -1,7 +1,70 @@
 /**
  * AMISTAD - Friendship Portal & Calculator
- * Interactive Script
+ * Interactive Script with Supabase Visitor & Calculation Tracking
  */
+
+/* ==========================================================================
+   Supabase Configuration
+   Paste your Supabase Project credentials below (from Project Settings > API):
+   ========================================================================== */
+const SUPABASE_URL = "";       // e.g., "https://abcdefghijkl.supabase.co"
+const SUPABASE_ANON_KEY = "";  // e.g., "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+
+let supabaseClient = null;
+
+function getSupabaseClient() {
+    if (supabaseClient) return supabaseClient;
+    if (typeof window.supabase !== 'undefined' && SUPABASE_URL && SUPABASE_ANON_KEY) {
+        try {
+            supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        } catch (err) {
+            console.warn('Supabase initialization error:', err);
+        }
+    }
+    return supabaseClient;
+}
+
+// Log a site visit to Supabase
+async function trackSiteVisit() {
+    const client = getSupabaseClient();
+    if (!client) return;
+
+    try {
+        await client.from('site_visits').insert([{
+            path: window.location.pathname,
+            referrer: document.referrer || 'direct',
+            user_agent: navigator.userAgent,
+            screen_resolution: `${window.screen.width}x${window.screen.height}`,
+            language: navigator.language || 'en'
+        }]);
+    } catch (err) {
+        console.warn('Track visit log warning:', err);
+    }
+}
+
+// Log a friendship calculation to Supabase
+async function trackCalculationData(userName, friendName, vibe, score, archetype) {
+    const client = getSupabaseClient();
+    if (!client) {
+        console.info(`[Supabase Tracker Ready] Calculation logged locally: ${userName} & ${friendName} (Score: ${score}%, Vibe: ${vibe})`);
+        return;
+    }
+
+    try {
+        const { error } = await client.from('friendship_calculations').insert([{
+            user_name: userName,
+            friend_name: friendName,
+            vibe: vibe,
+            score: score,
+            archetype: archetype,
+            user_agent: navigator.userAgent,
+            referrer: document.referrer || 'direct'
+        }]);
+        if (error) console.warn('Supabase insert error:', error.message);
+    } catch (err) {
+        console.warn('Track calculation error:', err);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     initBackgroundCanvas();
@@ -9,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFortuneCookie();
     initStickyWall();
     initNavigation();
+    trackSiteVisit();
 });
 
 /* ==========================================================================
@@ -229,8 +293,8 @@ function initCalculator() {
         }
         const positiveHash = Math.abs(hash);
 
-        // Core score between 91% and 100%
-        const score = 90 + (positiveHash % 11); // 90 to 100
+        // Core score between 90% and 100%
+        const score = 90 + (positiveHash % 11);
         const trust = 93 + (positiveHash % 8);
         const laugh = 92 + ((positiveHash >> 2) % 9);
         const telepathy = 89 + ((positiveHash >> 3) % 12);
@@ -293,6 +357,9 @@ function initCalculator() {
 
         // Confetti burst
         triggerConfetti();
+
+        // Log calculation to Supabase
+        trackCalculationData(n1, n2, vibe, score, details.title);
     }
 
     function animateCounter(element, target) {
